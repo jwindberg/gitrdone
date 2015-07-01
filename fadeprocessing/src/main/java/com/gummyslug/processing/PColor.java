@@ -70,17 +70,6 @@ public class PColor {
 		r = 255 - (((255 - r) * s1) >> 8);
 		g = 255 - (((255 - g) * s1) >> 8);
 		b = 255 - (((255 - b) * s1) >> 8);
-
-		// Value (brightness) and 24-bit color concat merged: similar to above,
-		// add
-		// 1 to allow shifts, and upgrade to long makes other conversions
-		// implicit.
-		v1 = v + 1;
-
-//		r = (int) (r * v1);
-//		g = (int) (g * v1);
-//		b = (int) (b * v1);
-
 		return new PColor(r, g, b);
 	}
 

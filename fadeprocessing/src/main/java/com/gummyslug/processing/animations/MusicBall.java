@@ -1,6 +1,7 @@
 package com.gummyslug.processing.animations;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import processing.core.PVector;
 
@@ -19,7 +20,7 @@ public class MusicBall extends AnimationApplet {
 	AudioInput audioInput;
 	BeatDetect beat;
 	BeatListener bl;
-	ArrayList balls = new ArrayList();
+	List<Ball> balls = new ArrayList<Ball>();
 
 	public void setupInternal() {
 		// always start Minim before you do anything with it
@@ -44,9 +45,9 @@ public class MusicBall extends AnimationApplet {
 		// use the mix buffer to draw the waveforms.
 		// because these are MONO files, we could have used the left or right
 		// buffers and got the same data
-		boolean kick = beat.isKick();
-		boolean hat = beat.isHat();
-		boolean snare = beat.isSnare();
+//		boolean kick = beat.isKick();
+//		boolean hat = beat.isHat();
+//		boolean snare = beat.isSnare();
 		if (beat.isRange(5, 15, 2)) {
 			int col = color(random(255), random(255), random(255));
 			for (int j = 0; j < abs(audioInput.mix.level() * 50); j++) {

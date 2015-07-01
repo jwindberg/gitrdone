@@ -17,6 +17,12 @@
 			<version>4.12</version>
 		</dependency>
 
+		<dependency>
+			<groupId>traer.physics</groupId>
+			<artifactId>physics</artifactId>
+			<version>3.0</version>
+		</dependency>
+
 
 	</dependencies>
 </project>

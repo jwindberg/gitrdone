@@ -28,7 +28,7 @@ public class Camera extends AnimationApplet {
 	}
 
 	private OpenCVFrameGrabber initializeGrabber() {
-		OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(1);
+		OpenCVFrameGrabber grabber = new OpenCVFrameGrabber(0);
 		try {
 			grabber.start();
 		} catch (Exception e) {
