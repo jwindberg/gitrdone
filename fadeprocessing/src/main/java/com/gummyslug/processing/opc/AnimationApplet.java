@@ -13,9 +13,9 @@ public abstract class AnimationApplet extends PApplet {
 
 	static public final int BLOCK_SIZE = 256;
 
-	 static public final String HOST_NAME = "192.168.254.6";
+	static public final String HOST_NAME = "localhost";
 	static public final int HOST_PORT = 7890;
-	static public final Layout LAYOUT = Layout.FOUR;
+	static public final Layout LAYOUT = Layout.TWO;
 
 	@Override
 	public void setup() {

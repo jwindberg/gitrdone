@@ -11,7 +11,7 @@ public class FlashLight extends AnimationApplet {
 
 	public void setupInternal() {
 		// Load a sample image
-		dot = loadImage("data/dot.png");
+		dot = loadImage("data/Lustre_Logo.jpg");
 	}
 
 	public void draw() {
