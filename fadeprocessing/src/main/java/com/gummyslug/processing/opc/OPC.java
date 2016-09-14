@@ -17,7 +17,7 @@ import com.gummyslug.processing.PColor;
 public class OPC {
 
 	public static enum Layout {
-		ONE, TWO, FOUR, TOWER, TWO_DIAMOND;
+		ONE, TWO, FOUR, TOWER, TWO_DIAMOND, EightByEight;
 	}
 
 	public static Random RANDOM = new Random();
@@ -52,25 +52,33 @@ public class OPC {
 
 	public void setLayout(Layout layout) {
 		switch (layout) {
+
+		case EightByEight:
+			ledGrid8x8(0, parent.getWidth() / 4f, parent.getHeight() / 2f, parent.getHeight() / 8.0f, 0, false);
+			break;
 		case ONE:
 			ledGrid16x16(0, parent.getWidth() / 4f, parent.getHeight() / 2f, parent.getHeight() / 16.0f, 0, true);
 			break;
 		case TWO:
 			ledGrid16x16(0, parent.getWidth() / 4f, parent.getHeight() / 2f, parent.getHeight() / 16.0f, 0, true);
-			ledGrid16x16(256, parent.getWidth() * 3f / 4f, parent.getHeight() / 2f, parent.getHeight() / 16.0f, 0, true);
+			ledGrid16x16(256, parent.getWidth() * 3f / 4f, parent.getHeight() / 2f, parent.getHeight() / 16.0f, 0,
+					true);
 			break;
 		case FOUR:
 			ledGrid16x16(0, parent.getWidth() / 4f, parent.getHeight() / 4f, parent.getHeight() / 32.0f, 0, true);
-			ledGrid16x16(256, parent.getWidth() * 3f / 4f, parent.getHeight() / 4f, parent.getHeight() / 32.0f, 0, true);
-			ledGrid16x16(512, parent.getWidth() / 4f, parent.getHeight() * 3f / 4f, parent.getHeight() / 32.0f, 0, true);
+			ledGrid16x16(256, parent.getWidth() * 3f / 4f, parent.getHeight() / 4f, parent.getHeight() / 32.0f, 0,
+					true);
+			ledGrid16x16(512, parent.getWidth() / 4f, parent.getHeight() * 3f / 4f, parent.getHeight() / 32.0f, 0,
+					true);
 			ledGrid16x16(768, parent.getWidth() * 3f / 4f, parent.getHeight() * 3f / 4f, parent.getHeight() / 32.0f, 0,
 					true);
 			break;
 		case TWO_DIAMOND:
 			float angle = -PConstants.QUARTER_PI;
-//			float angle = 0.0f;
+			// float angle = 0.0f;
 			ledGrid16x16(0, parent.getWidth() / 4f, parent.getHeight() / 2f, parent.getHeight() / 24.0f, angle, true);
-			ledGrid16x16(256, parent.getWidth() * 3f / 4f, parent.getHeight() / 2f, parent.getHeight() / 24.0f, angle, true);
+			ledGrid16x16(256, parent.getWidth() * 3f / 4f, parent.getHeight() / 2f, parent.getHeight() / 24.0f, angle,
+					true);
 			break;
 		case TOWER:
 			ledGrid(0, 16, 32, parent.getWidth() / 2f, parent.getHeight() / 2f, parent.getWidth() / 16f,
@@ -120,8 +128,8 @@ public class OPC {
 		float c = (float) Math.cos(angle);
 		for (int i = 0; i < count; i++) {
 			led(reversed ? (index + count - 1 - i) : (index + i),
-					(int) (x + (i - (count - 1) / 2.0) * spacing * c + 0.5), (int) (y + (i - (count - 1) / 2.0)
-							* spacing * s + 0.5));
+					(int) (x + (i - (count - 1) / 2.0) * spacing * c + 0.5),
+					(int) (y + (i - (count - 1) / 2.0) * spacing * s + 0.5));
 		}
 	}
 
@@ -133,10 +141,9 @@ public class OPC {
 		float s = (float) Math.sin(angle + Math.PI / 2.0);
 		float c = (float) Math.cos(angle + Math.PI / 2.0);
 		for (int i = 0; i < numStrips; i++) {
-			ledStrip(index + stripLength * i, stripLength,
-					(float) (x + (i - (numStrips - 1) / 2.0) * stripSpacing * c),
-					(float) (y + (i - (numStrips - 1) / 2.0) * stripSpacing * s), ledSpacing, angle, zigzag
-							&& (i % 2) == 1);
+			ledStrip(index + stripLength * i, stripLength, (float) (x + (i - (numStrips - 1) / 2.0) * stripSpacing * c),
+					(float) (y + (i - (numStrips - 1) / 2.0) * stripSpacing * s), ledSpacing, angle,
+					zigzag && (i % 2) == 1);
 		}
 	}
 

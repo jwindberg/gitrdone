@@ -13,9 +13,9 @@ public abstract class AnimationApplet extends PApplet {
 
 	static public final int BLOCK_SIZE = 256;
 
-	static public final String HOST_NAME = "localhost";
+	static public final String HOST_NAME = "orchid";
 	static public final int HOST_PORT = 7890;
-	static public final Layout LAYOUT = Layout.TWO;
+	static public final Layout LAYOUT = Layout.FOUR;
 
 	@Override
 	public void setup() {
@@ -36,6 +36,9 @@ public abstract class AnimationApplet extends PApplet {
 	public void setSize(OPC.Layout layout) {
 		switch (layout) {
 		case ONE:
+			size(getBlockSize(), getBlockSize(), getRenderer());
+			break;
+		case EightByEight:
 			size(getBlockSize(), getBlockSize(), getRenderer());
 			break;
 		case TWO:

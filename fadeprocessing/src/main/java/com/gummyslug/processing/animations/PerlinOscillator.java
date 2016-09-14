@@ -6,7 +6,7 @@ import com.gummyslug.processing.opc.AnimationApplet;
 
 import processing.core.PVector;
 
-public class PerlinOscilallator extends AnimationApplet {
+public class PerlinOscillator extends AnimationApplet {
 
 	/**
 	 * 2D Perlin Oscilallator

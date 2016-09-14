@@ -79,7 +79,6 @@ public class AudioVisualizer extends AnimationApplet {
 	public void stop() {
 		// always close Minim audio classes when you finish with them
 		minim.stop();
-
 		super.stop();
 	}
 
