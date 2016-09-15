@@ -17,7 +17,7 @@ public class OceanWaves extends AnimationApplet {
 	public void draw() {
 		background(0);
 		noFill();
-		stroke(30, 200, 250);
+		stroke(30, 100, 150);
 
 		for (int i = 0; i < 100; i += 1) {
 			beginShape();
