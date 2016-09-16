@@ -35,8 +35,8 @@ public class Seaweed extends AnimationApplet {
 
 	class SeaWeed {
 		final static float DIST_MAX = 4;// length of each segment
-		final static float maxNbSeg = 100;// max number of segments
-		final static float minNbSeg = 35;// min number of segments
+		final static float maxNbSeg = 125;// max number of segments
+		final static float minNbSeg = 90;// min number of segments
 		final static float maxWidth = 30;// max width of the base line
 		final static float minWidth = 11;// min width of the base line
 		final static float FLOTATION = 5;// flotation constant

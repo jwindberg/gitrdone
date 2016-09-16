@@ -11,68 +11,59 @@ public class NeonFish extends AnimationApplet {
 
 	private static final long serialVersionUID = 1L;
 
+	private static final int numFish = 12;
+	private boolean randomColor = true;
+
 	List<Fish> school = new ArrayList<Fish>();
 
 	@Override
 	protected void setupInternal() {
-		/* Gives a nice glow feel */
-		strokeWeight(30);
-		/*
-		 * IMPORTANT: because we are using vertex's to make our fish, the line
-		 * joining becomes spiky when the strokeWeight is bigger than 1.
-		 */
+		strokeWeight(20);
 		strokeJoin(ROUND);
 		stroke(0, 150, 255);
-		/* Add 100 fish */
-		for (int i = 0; i < 10; i++) {
-			school.add(new Fish());
+		for (int i = 0; i < numFish; i++) {
+			float red = randomColor ? random(0, 255) : 0;
+			float green = randomColor ? random(0, 255) : 150;
+			float blue = randomColor ? random(0, 255) : 150;
+			school.add(new Fish(red, green, blue));
 		}
 	}
 
 	public void draw() {
 		background(0);
-		fill(0, 30);
-//		rect(-10, -10, width + 20, height + 20);
-		// fill(0, 150, 255, 20);
-		fill(0, 0, 0);
 		fill(0, 0, 0, 100);
 		for (Fish fish : school) {
 			fish.draw();
-			fish.boundaries();
 		}
-
 	}
 
-	class Fish {
-		PVector location;
-		PVector velocity;
-		/* Just to add some individuality to the fish wiggle */
-		float s = random(-90, 90);
-		float d = random(0.2f, 0.4f);
-		
-		float red = random(0, 255);
-		float green = random(0, 255);
-		float blue = random(0, 255);
+	private class Fish {
+		PVector location = new PVector(random(width), random(height));
+		PVector velocity = new PVector(random(-1, 1), random(-1, 1));
+		private float direction = random(-90, 90);
+		private float size = random(0.1f, 0.3f);
+		private float red;
+		private float green;
+		private float blue;
 
-		Fish() {
-			location = new PVector(random(width), random(height));
-			/* Make a random velocity */
-			velocity = new PVector(random(-1, 1), random(-1, 1));
+		public Fish(float red, float green, float blue) {
+			this.red = red;
+			this.green = green;
+			this.blue = blue;
 		}
 
 		void draw() {
 			stroke(red, green, blue);
-//			fill(red, green, blue, 100);
 			location.add(velocity);
 			pushMatrix();
 			translate(location.x, location.y);
-			scale(d);
+			scale(size);
 			/* Get the direction and add 90 degrees. */
-			rotate(velocity.heading2D() - radians(90));
+			rotate(velocity.heading() - radians(90));
 			beginShape();
 			for (int i = 0; i <= 180; i += 20) {
 				float x = sin(radians(i)) * i / 3;
-				float angle = sin(radians(i + s + frameCount * 5)) * 50;
+				float angle = sin(radians(i + direction + frameCount * 5)) * 50;
 				vertex(x - angle, i * 2);
 				vertex(x - angle, i * 2);
 			}
@@ -83,26 +74,29 @@ public class NeonFish extends AnimationApplet {
 			 * the below line and comment the other line.
 			 */
 			for (int i = 180; i >= 0; i -= 20) {
-				// for (int i = 0; i < 180; i+=20){
 				float x = sin(radians(i)) * i / 3;
-				float angle = sin(radians(i + s + frameCount * 5)) * 50;
+				float angle = sin(radians(i + direction + frameCount * 5)) * 50;
 				vertex(-x - angle, i * 2);
 				vertex(-x - angle, i * 2);
 			}
 			endShape();
 			popMatrix();
+			boundaries();
 		}
 
 		void boundaries() {
-			/* Instead of changing the velocity when the fish */
-			if (location.x < -100)
-				location.x = width + 100;
-			if (location.x > width + 100)
-				location.x = -100;
-			if (location.y < -100)
-				location.y = height + 100;
-			if (location.y > height + 100)
-				location.y = -100;
+
+			float offSet = width * size;
+
+			if (location.x < -offSet)
+				location.x = width + offSet;
+			if (location.x > width + offSet)
+				location.x = -offSet;
+
+			if (location.y < -offSet)
+				location.y = height + offSet;
+			if (location.y > height + offSet)
+				location.y = -offSet;
 		}
 	}
 
