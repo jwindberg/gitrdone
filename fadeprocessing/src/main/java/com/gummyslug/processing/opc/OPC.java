@@ -17,8 +17,10 @@ import com.gummyslug.processing.PColor;
 public class OPC {
 
 	public static enum Layout {
-		ONE, TWO, FOUR, TOWER, TWO_DIAMOND, EightByEight;
+		ONE, TWO, FOUR, TOWER, TWO_DIAMOND, TRIPOD, EightByEight;
 	}
+
+	public static float QUARTER_PI = (float) (Math.PI / 4.0f);
 
 	public static Random RANDOM = new Random();
 
@@ -84,6 +86,17 @@ public class OPC {
 			ledGrid(0, 16, 32, parent.getWidth() / 2f, parent.getHeight() / 2f, parent.getWidth() / 16f,
 					parent.getHeight() / 32, 0, true);
 			break;
+		case TRIPOD:
+			ledGrid16x16(0, parent.getWidth() / 5f, parent.getHeight() / 2f, parent.getHeight() / 24.0f,
+					5.0f * QUARTER_PI, true);
+			ledGrid16x16(256, parent.getWidth() / 2.0f, parent.getHeight() / 2f, parent.getHeight() / 24.0f, QUARTER_PI,
+					true);
+			ledGrid16x16(512, parent.getWidth() * (4.0f / 5.0f), parent.getHeight() / 2f, parent.getHeight() / 24.0f,
+					3.0f * QUARTER_PI, true);
+
+			break;
+		default:
+			throw new RuntimeException("unknown layout");
 
 		}
 	}

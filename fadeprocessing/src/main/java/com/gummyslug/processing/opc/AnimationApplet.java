@@ -13,9 +13,9 @@ public abstract class AnimationApplet extends PApplet {
 
 	static public final int BLOCK_SIZE = 256;
 
-	static public final String HOST_NAME = "orchid";
+	static public final String HOST_NAME = "horizon";
 	static public final int HOST_PORT = 7890;
-	static public final Layout LAYOUT = Layout.FOUR;
+	static public final Layout LAYOUT = Layout.TRIPOD;
 
 	@Override
 	public void setup() {
@@ -52,6 +52,9 @@ public abstract class AnimationApplet extends PApplet {
 			break;
 		case TWO_DIAMOND:
 			size(getBlockSize() * 2, getBlockSize(), getRenderer());
+			break;
+		case TRIPOD:
+			size(getBlockSize() * 3, getBlockSize(), getRenderer());
 			break;
 		default:
 			throw new RuntimeException("unknown layout");
