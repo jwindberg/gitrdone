@@ -13,7 +13,6 @@ public class AudioVisualizer extends AnimationApplet {
 	private static final long serialVersionUID = 1L;
 
 	Minim minim;
-	AudioPlayer audioPlayer;
 	FFT fft;
 	AudioInput audioInput;
 	float[] angle;

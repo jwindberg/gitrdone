@@ -1,21 +1,25 @@
 package com.gummyslug.processing.opc;
 
-import processing.core.PApplet;
-import processing.core.PConstants;
+import java.util.Random;
 
 import com.gummyslug.processing.opc.OPC.Layout;
+
+import processing.core.PApplet;
+import processing.core.PConstants;
 
 public abstract class AnimationApplet extends PApplet {
 
 	protected OPC opc;
+	
+	protected static final Random RANDOM = new Random();
 
 	private static final long serialVersionUID = 1L;
 
 	static public final int BLOCK_SIZE = 256;
 
-	static public final String HOST_NAME = "localhost";
+	static public final String HOST_NAME = "grape";
 	static public final int HOST_PORT = 7890;
-	static public final Layout LAYOUT = Layout.TRIPOD;
+	static public final Layout LAYOUT = Layout.FOUR;
 
 	@Override
 	public void setup() {

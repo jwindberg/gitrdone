@@ -13,7 +13,7 @@ public class FallingSnow extends AnimationApplet {
 	int[] direction = new int[quantity];
 	int[] color = new int[quantity];
 	int minFlakeSize = 1;
-	int maxFlakeSize = 5;
+	int maxFlakeSize = 3;
 	float minStep = 0.1f;
 	float maxStep = 0.5f;
 	float multiplier = 5f;
